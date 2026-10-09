@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard | Sri Balaji Constructions{% endblock %}
+{% block content %}
+<section class="dashboard-section"><div class="container">
+<div class="dashboard-heading"><div><p class="eyebrow">SRI BALAJI / ADMIN</p><h1>Dashboard</h1><p>Manage the demo website's projects and customer enquiries.</p></div><a class="btn btn-outline-dark" href="{{ url_for('logout') }}">Log Out</a></div>
+<div class="stats-grid"><div class="stat-card"><span>Total enquiries</span><strong>{{ enquiry_count }}</strong></div><div class="stat-card"><span>Project records</span><strong>{{ project_count }}</strong></div><div class="stat-card"><span>Storage</span><strong>SQLite</strong></div></div>
+
+<div class="admin-grid">
+<section class="admin-panel"><div class="panel-heading"><div><p class="eyebrow">PROJECT MANAGEMENT</p><h2>Add a project</h2></div></div>
+<form method="POST" action="{{ url_for('add_project') }}" class="admin-form">
+<label for="project_name">Project name *</label><input id="project_name" name="name" required maxlength="150" placeholder="Example: New Residential Project">
+<div class="two-fields"><div><label for="project_type">Type</label><select id="project_type" name="project_type"><option>Residential</option><option>Commercial</option><option>Renovation</option><option>Other</option></select></div><div><label for="status">Status</label><select id="status" name="status"><option>Planning</option><option>In Progress</option><option>Completed</option><option>On Hold</option></select></div></div>
+<label for="project_location">Location</label><input id="project_location" name="location" maxlength="150" placeholder="City or area">
+<label for="description">Description</label><textarea id="description" name="description" rows="3" maxlength="1000" placeholder="Short project description"></textarea>
+<button class="btn btn-gold" type="submit">+ Add Project</button>
+</form></section>
+<section class="admin-panel"><div class="panel-heading"><div><p class="eyebrow">PROJECT LIST</p><h2>Current projects</h2></div></div>
+{% if projects %}
+<div class="table-wrap"><table><thead><tr><th>Project</th><th>Status</th><th>Action</th></tr></thead><tbody>{% for project in projects %}<tr><td><strong>{{ project['name'] }}</strong><small>{{ project['project_type'] }} · {{ project['location'] }}</small></td><td><span class="status">{{ project['status'] }}</span></td><td><form method="POST" action="{{ url_for('delete_project', project_id=project['id']) }}" onsubmit="return confirm('Delete this project?');"><button class="delete-btn" type="submit">Delete</button></form></td></tr>{% endfor %}</tbody></table></div>
+{% else %}<p>No project records yet.</p>{% endif %}
+</section></div>
+
+<section class="admin-panel enquiries-panel"><div class="panel-heading"><div><p class="eyebrow">CUSTOMER REQUESTS</p><h2>Enquiries received</h2></div><span class="count-pill">{{ enquiry_count }} total</span></div>
+{% if enquiries %}
+<div class="table-wrap"><table><thead><tr><th>Customer</th><th>Contact</th><th>Project details</th><th>Date received</th></tr></thead><tbody>
+{% for enquiry in enquiries %}<tr><td><strong>{{ enquiry['name'] }}</strong><small>{{ enquiry['email'] or 'No email provided' }}</small></td><td>{{ enquiry['phone'] }}</td><td><strong>{{ enquiry['project_type'] or 'Not specified' }}</strong><small>{{ enquiry['location'] or 'Location not provided' }}</small><small>{{ enquiry['message'] or 'No message' }}</small></td><td>{{ enquiry['created_at'] }}</td></tr>{% endfor %}
+</tbody></table></div>
+{% else %}<div class="empty-state"><h3>No enquiries yet</h3><p>Customer enquiries submitted through the Contact page will appear here.</p></div>{% endif %}
+</section>
+</div></section>
+{% endblock %}

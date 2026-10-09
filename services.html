@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Services | Sri Balaji Constructions{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">OUR SERVICES</p><h1>Spaces built around <span>your needs.</span></h1><p>Example service categories for the owners to review and customize.</p></div></section>
+<section class="section"><div class="container card-grid">
+<article class="service-card"><div class="service-icon">⌂</div><h3>Residential Construction</h3><p>Independent houses, villas, and residential building construction.</p><ul><li>Requirement discussion</li><li>Planning coordination</li><li>Construction and finishing</li></ul></article>
+<article class="service-card"><div class="service-icon">▥</div><h3>Commercial Buildings</h3><p>Construction solutions for shops, offices, and other business spaces.</p><ul><li>Space requirements</li><li>Work scope discussion</li><li>Project coordination</li></ul></article>
+<article class="service-card"><div class="service-icon">✧</div><h3>Renovation</h3><p>Improvements to existing homes and commercial properties.</p><ul><li>Repair and improvement</li><li>Interior finishing</li><li>Site assessment enquiry</li></ul></article>
+<article class="service-card"><div class="service-icon">▤</div><h3>Planning Support</h3><p>Discuss the early steps needed to understand your construction project.</p><ul><li>Initial consultation</li><li>Scope discussion</li><li>Next-step guidance</li></ul></article>
+<article class="service-card"><div class="service-icon">◈</div><h3>Interior & Finishing</h3><p>Finishing work and practical improvements to make spaces ready to use.</p><ul><li>Finishing requirements</li><li>Material discussions</li><li>Work coordination</li></ul></article>
+<article class="service-card service-highlight"><h3>Have a different requirement?</h3><p>Send your project details and the team can review the request.</p><a class="btn btn-gold" href="{{ url_for('contact') }}">Ask for a Consultation</a></article>
+</div><p class="container demo-note">Service availability must be confirmed by the company before publishing this website.</p></section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Contact | Sri Balaji Constructions{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">CONTACT US</p><h1>Let's talk about <span>your project.</span></h1><p>Share a few details and our team can follow up with you.</p></div></section>
+<section class="section"><div class="container contact-layout">
+<div class="contact-copy"><p class="eyebrow">START A CONVERSATION</p><h2>Tell us what you want to build.</h2><p>Use this enquiry form for a new home, commercial project, renovation, or other construction requirement.</p><div class="contact-detail"><span>☎</span><div><strong>Phone</strong><p>Add company phone number</p></div></div><div class="contact-detail"><span>✉</span><div><strong>Email</strong><p>Add company email address</p></div></div><div class="contact-detail"><span>⌖</span><div><strong>Location</strong><p>Add office address</p></div></div><p class="demo-note">Update the contact information with verified company details.</p></div>
+<form class="form-card" method="POST" action="{{ url_for('contact') }}" id="enquiryForm">
+<h2>Project enquiry</h2><p class="form-intro">Fields marked * are required.</p>
+<label for="name">Full name *</label><input id="name" name="name" type="text" required maxlength="100" placeholder="Enter your name">
+<label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" required maxlength="20" placeholder="Enter your phone number">
+<label for="email">Email address</label><input id="email" name="email" type="email" maxlength="120" placeholder="you@example.com">
+<label for="project_type">Project type</label><select id="project_type" name="project_type"><option value="">Select project type</option><option>Residential</option><option>Commercial</option><option>Renovation</option><option>Interior & Finishing</option><option>Other</option></select>
+<label for="location">Project location</label><input id="location" name="location" type="text" maxlength="150" placeholder="City or area">
+<label for="message">Tell us about your project</label><textarea id="message" name="message" rows="4" maxlength="1500" placeholder="Share your requirements (optional)"></textarea>
+<button class="btn btn-gold btn-full" type="submit">Submit Enquiry →</button>
+<p class="privacy-note">Demo website: your form submission is stored in the local project database.</p>
+</form></div></section>
+{% endblock %}

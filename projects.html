@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Projects | Sri Balaji Constructions{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">PROJECT PORTFOLIO</p><h1>Work that brings ideas <span>to life.</span></h1><p>Project records are managed from the admin dashboard. Sample records are clearly marked for this demo.</p></div></section>
+<section class="section"><div class="container project-grid">
+{% for project in projects %}
+<article class="project-card"><div class="project-placeholder"><span>PROJECT {{ "%02d"|format(loop.index) }}</span></div><div class="project-info"><span class="tag">{{ project['project_type'] or 'Construction' }}</span><h3>{{ project['name'] }}</h3><p>{{ project['location'] }}</p><p>{{ project['description'] }}</p><span class="status">{{ project['status'] }}</span></div></article>
+{% else %}
+<div class="empty-state"><h3>No projects added yet</h3><p>Admin can add project details after signing in.</p></div>
+{% endfor %}
+</div><p class="container demo-note">Replace sample project details and add real project photos before the website goes live.</p></section>
+{% endblock %}

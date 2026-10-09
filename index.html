@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Sri Balaji Constructions | Home{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <p class="eyebrow">QUALITY • TRUST • COMMITMENT</p>
+        <h1>Building Your Vision.<br><span>Creating Your Future.</span></h1>
+        <p class="hero-text">Reliable construction solutions for homes, commercial spaces, and renovation projects.</p>
+        <div class="hero-buttons">
+            <a class="btn btn-gold" href="{{ url_for('contact') }}">Request a Consultation</a>
+            <a class="btn btn-outline" href="{{ url_for('projects_page') }}">Explore Projects</a>
+        </div>
+        <div class="hero-note">A construction website demo for Sri Balaji Constructions</div>
+    </div>
+</section>
+
+<section class="trust-strip">
+    <div class="container trust-items">
+        <div><strong>01</strong><span>Customer First</span></div>
+        <div><strong>02</strong><span>Quality Materials</span></div>
+        <div><strong>03</strong><span>Clear Communication</span></div>
+        <div><strong>04</strong><span>Reliable Planning</span></div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">WHAT WE DO</p>
+            <h2>Construction solutions <span>made simple.</span></h2>
+            <p>From the first plan to the finishing touches, we help turn ideas into useful, lasting spaces.</p>
+        </div>
+        <div class="card-grid">
+            <article class="service-card"><div class="service-icon">⌂</div><h3>Residential Construction</h3><p>Planning and building comfortable homes tailored to your needs.</p><a href="{{ url_for('services') }}">Learn more →</a></article>
+            <article class="service-card"><div class="service-icon">▥</div><h3>Commercial Construction</h3><p>Practical spaces designed for businesses, teams, and customers.</p><a href="{{ url_for('services') }}">Learn more →</a></article>
+            <article class="service-card"><div class="service-icon">✧</div><h3>Renovation & Finishing</h3><p>Refresh existing spaces with improvements and finishing work.</p><a href="{{ url_for('services') }}">Learn more →</a></article>
+        </div>
+    </div>
+</section>
+
+<section class="section section-soft">
+    <div class="container split-layout">
+        <div class="image-panel">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85" alt="Modern residential building">
+            <div class="image-label"><strong>Thoughtful planning.</strong><span>Dependable execution.</span></div>
+        </div>
+        <div class="split-copy">
+            <p class="eyebrow">WHY SRI BALAJI</p>
+            <h2>A dependable partner for your <span>construction journey.</span></h2>
+            <p>We believe a good construction experience starts with listening, clear planning, and regular communication.</p>
+            <ul class="check-list">
+                <li>Understand your requirements first</li>
+                <li>Discuss scope, materials, and timelines</li>
+                <li>Keep project updates easy to follow</li>
+                <li>Focus on quality and practical solutions</li>
+            </ul>
+            <a class="btn btn-dark" href="{{ url_for('about') }}">Know About Us</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-heading heading-row">
+            <div><p class="eyebrow">OUR WORK</p><h2>Featured projects</h2></div>
+            <a class="text-link" href="{{ url_for('projects_page') }}">View all projects →</a>
+        </div>
+        <div class="project-grid">
+            {% for project in projects %}
+            <article class="project-card">
+                <div class="project-placeholder"><span>SB / PROJECT</span></div>
+                <div class="project-info"><span class="tag">{{ project['project_type'] or 'Construction' }}</span><h3>{{ project['name'] }}</h3><p>{{ project['location'] }}</p><span class="status">{{ project['status'] }}</span></div>
+            </article>
+            {% else %}
+            <p>Projects will be added here.</p>
+            {% endfor %}
+        </div>
+        <p class="demo-note">The project names shown are sample demo data. Replace them with approved company projects.</p>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container cta-content"><div><p class="eyebrow">LET'S DISCUSS YOUR PROJECT</p><h2>Ready to build something meaningful?</h2><p>Tell us what you have in mind. We'll get in touch to understand your requirements.</p></div><a class="btn btn-gold" href="{{ url_for('contact') }}">Send an Enquiry →</a></div>
+</section>
+{% endblock %}
